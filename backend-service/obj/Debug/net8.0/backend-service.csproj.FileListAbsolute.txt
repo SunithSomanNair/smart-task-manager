@@ -31,3 +31,4 @@ E:\Study- Use this\Azure_PaaS_DotnetCore_CosmosDB\smart-task-manager\backend-ser
 E:\Study- Use this\Azure_PaaS_DotnetCore_CosmosDB\smart-task-manager\backend-service\obj\Debug\net8.0\backend-service.pdb
 E:\Study- Use this\Azure_PaaS_DotnetCore_CosmosDB\smart-task-manager\backend-service\obj\Debug\net8.0\backend-service.genruntimeconfig.cache
 E:\Study- Use this\Azure_PaaS_DotnetCore_CosmosDB\smart-task-manager\backend-service\obj\Debug\net8.0\ref\backend-service.dll
+E:\Study- Use this\Azure_PaaS_DotnetCore_CosmosDB\smart-task-manager\backend-service\obj\Debug\net8.0\backend-service.sourcelink.json
