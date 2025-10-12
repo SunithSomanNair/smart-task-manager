@@ -1,0 +1,14 @@
+input {
+  padding: 8px;
+  margin-right: 8px;
+  width: 250px;
+}
+
+button {
+  padding: 8px 12px;
+}
+
+p {
+  margin-top: 12px;
+  color: green;
+}

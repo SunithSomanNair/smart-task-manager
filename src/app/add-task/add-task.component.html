@@ -1,1 +1,4 @@
-<p>add-task works!</p>
+<h2>Add Task</h2>
+<input [(ngModel)]="newTask" placeholder="Enter task" />
+<button (click)="addTask()">Add</button>
+<p *ngIf="message">{{ message }}</p>
