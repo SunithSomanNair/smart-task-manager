@@ -7,3 +7,13 @@ li {
   margin: 8px 0;
   font-size: 16px;
 }
+
+.badge-complete {
+  color: green;
+  font-weight: bold;
+}
+
+.badge-pending {
+  color: orange;
+  font-weight: bold;
+}
