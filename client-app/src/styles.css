@@ -1,26 +1,56 @@
-body, html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url('/assets/task_management.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: block;
 }
 
-body {
-  /*background-image: need to add a nice one */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Segoe UI', sans-serif;
+.app-container {
+    width: 90%;
+    max-width: 650px;
+    margin: 150px auto;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 24px 32px;
+    backdrop-filter: blur(8px);
 }
 
+button {
+    background-color: #6a0dad;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
 
+button:hover {
+    background-color: #7b1fe0;
+    transform: translateY(-2px);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 @media (max-width: 600px) {
-  input {
-    width: 100%;
-    margin-bottom: 8px;
-  }
+    .app-container {
+        padding: 20px;
+    }
 
-  button {
-    width: 100%;
-  }
+    input,
+    button {
+        width: 100%;
+    }
 }

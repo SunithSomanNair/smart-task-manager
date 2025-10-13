@@ -1,27 +1,43 @@
-ul {
-  list-style-type: none;
-  padding: 0;
+.empty-message, .info-text, .error {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 15px;
 }
 
-li {
-  margin: 8px 0;
-  font-size: 16px;
+.error { color: red; }
+
+.task-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .badge-complete {
-  color: green;
-  font-weight: bold;
+  color: #2e7d32;
+  font-weight: 600;
 }
 
 .badge-pending {
-  color: orange;
-  font-weight: bold;
+  color: #ef6c00;
+  font-weight: 600;
 }
 
-.task-card {
-  background-color: #f3f3f3;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.add-button {
+  display: block;
+  margin: 20px auto 0;
+  background-color: #6a0dad;
 }
