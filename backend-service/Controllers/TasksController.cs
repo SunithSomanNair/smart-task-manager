@@ -22,5 +22,20 @@ namespace backend_service.Controllers
             tasks.Add(newTask);
             return Ok(newTask);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateTask(int id, TaskItem updatedTask)
+        {
+            var existingTask = tasks.FirstOrDefault(t => t.Id == id);
+            if (existingTask == null)
+            {
+                return NotFound();
+            }
+
+            existingTask.Title = updatedTask.Title;
+            existingTask.IsCompleted = updatedTask.IsCompleted;
+
+            return Ok(existingTask);
+        }
     }
 }

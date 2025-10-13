@@ -35,4 +35,8 @@ export class TaskService {
       })
     );
   }
+
+  updateTask(task: TaskItem): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${task.id}`, task);
+  }
 }

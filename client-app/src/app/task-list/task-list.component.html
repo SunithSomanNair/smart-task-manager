@@ -1,20 +1,20 @@
 <div class="app-container">
-  <h2>Task List</h2>
+    <h2>Task List</h2>
 
-  <div *ngIf="loading" class="info-text">Loading tasks...</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-  <div *ngIf="tasks.length === 0" class="empty-message">
-    No tasks found. Please add tasks.
-  </div>
-
-  <div *ngFor="let task of tasks" class="task-card">
-    <div class="task-content">
-      <h3>{{ task.title }}</h3>
-      <span [ngClass]="task.isCompleted ? 'badge-complete' : 'badge-pending'">
-        {{ task.isCompleted ? 'Done' : 'To Do' }}
-      </span>
+    <div *ngIf="loading" class="info-text">Loading tasks...</div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <div *ngIf="tasks.length === 0" class="empty-message">
+        No tasks found. Please add tasks.
     </div>
-  </div>
 
-  <button routerLink="/add-task" class="add-button">Add Task</button>
+    <div *ngFor="let task of tasks" class="task-card">
+        <div class="task-content">
+            <h3>{{ task.title }}</h3>
+            <button (click)="toggleStatus(task)" [ngClass]="task.isCompleted ? 'btn-done' : 'btn-todo'">
+                {{ task.isCompleted ? 'Mark as To Do' : 'Mark as Done' }}
+            </button>
+        </div>
+    </div>
+
+    <button routerLink="/add-task" class="add-button">Add Task</button>
 </div>

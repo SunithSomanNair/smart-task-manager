@@ -28,4 +28,21 @@ export class TaskListComponent {
       }
     });
   }
+
+  toggleStatus(task: TaskItem): void {
+    const updatedTask: TaskItem = {
+      ...task,
+      isCompleted: !task.isCompleted
+    };
+
+    this.taskService.updateTask(updatedTask).subscribe({
+      next: () => {
+        task.isCompleted = updatedTask.isCompleted;
+      },
+      error: () => {
+        this.errorMessage = 'Failed to update task status.';
+      }
+    });
+  }
+
 }
