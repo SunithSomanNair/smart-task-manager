@@ -1,4 +1,10 @@
 <h2>Add Task</h2>
-<input [(ngModel)]="newTask" placeholder="Enter task" />
-<button (click)="addTask()">Add</button>
+
+<div class="form-container">
+  <input [(ngModel)]="newTask" placeholder="Enter task" />
+  <button (click)="addTask()">Add</button>
+</div>
+
 <p *ngIf="message">{{ message }}</p>
+
+<button routerLink="/task-list">Go to Task List</button>

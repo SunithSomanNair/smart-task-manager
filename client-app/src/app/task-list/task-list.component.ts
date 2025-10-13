@@ -28,23 +28,4 @@ export class TaskListComponent {
       }
     });
   }
-
-  addNewTask(title: string): void {
-    if (!title.trim()) {
-      this.errorMessage = 'Task title cannot be empty.';
-      return;
-    }
-
-    const newTask: TaskItem = { id: 0, title, isCompleted: false };
-    this.taskService.addTask(newTask).subscribe({
-      next: task => {
-        this.tasks.push(task);
-        this.errorMessage = '';
-      },
-      error: err => {
-        this.errorMessage = 'Failed to add task.';
-      }
-    });
-  }
-
 }

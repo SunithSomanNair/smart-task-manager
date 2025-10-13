@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TaskService, TaskItem } from '../services/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -9,12 +10,23 @@ export class AddTaskComponent {
   newTask = '';
   message = '';
 
-  addTask() {
-    if (this.newTask.trim()) {
-      this.message = `Task "${this.newTask}" added`;
-      this.newTask = '';
-    } else {
+  constructor(private taskService: TaskService) {}
+
+  addTask(): void {
+    if (!this.newTask.trim()) {
       this.message = 'Please enter a task';
+      return;
     }
+
+    const task: TaskItem = { id: 0, title: this.newTask, isCompleted: false };
+    this.taskService.addTask(task).subscribe({
+      next: () => {
+        this.message = `Task "${this.newTask}" added successfully`;
+        this.newTask = '';
+      },
+      error: () => {
+        this.message = 'Failed to add task';
+      }
+    });
   }
 }

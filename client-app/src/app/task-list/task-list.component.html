@@ -3,13 +3,13 @@
 <div *ngIf="loading">Loading tasks...</div>
 <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 
-<ul>
-    <li *ngFor="let task of tasks">
-        <span [ngClass]="task.isCompleted ? 'badge-complete' : 'badge-pending'">
-            {{ task.isCompleted ? 'Done' : 'To Do' }}
-        </span>
-    </li>
-</ul>
+<div *ngIf="tasks.length === 0" class="empty-message">
+  No tasks found. Please add tasks.
+</div>
 
-<input #taskTitle placeholder="New task title" />
-<button (click)="addNewTask(taskTitle.value)">Add Task</button>
+<div *ngFor="let task of tasks" class="task-card">
+  <h3>{{ task.title }}</h3>
+  <p>Status: {{ task.isCompleted ? 'Done' : 'To Do' }}</p>
+</div>
+
+<button routerLink="/add-task" class="add-button">Add Task</button>

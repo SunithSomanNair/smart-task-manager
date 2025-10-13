@@ -18,27 +18,10 @@ li {
   font-weight: bold;
 }
 
-.error {
-  color: red;
+.task-card {
+  background-color: #f3f3f3;
+  padding: 12px;
   margin-bottom: 10px;
-}
-
-input {
-  padding: 6px;
-  margin-right: 8px;
-  width: 200px;
-}
-
-button {
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
