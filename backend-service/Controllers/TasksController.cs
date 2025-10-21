@@ -15,6 +15,18 @@ namespace backend_service.Controllers
             return Ok(tasks);
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<TaskItem> GetTaskById(int id)
+        {
+            var task = tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(task);
+        }
+
         [HttpPost]
         public ActionResult<TaskItem> AddTask(TaskItem newTask)
         {
@@ -36,6 +48,19 @@ namespace backend_service.Controllers
             existingTask.IsCompleted = updatedTask.IsCompleted;
 
             return Ok(existingTask);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTask(int id)
+        {
+            var taskToDelete = tasks.FirstOrDefault(t => t.Id == id);
+            if (taskToDelete == null)
+            {
+                return NotFound();
+            }
+
+            tasks.Remove(taskToDelete);
+            return Ok(new { message = "Task deleted successfully." });
         }
     }
 }
