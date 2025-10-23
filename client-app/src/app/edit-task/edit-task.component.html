@@ -1,0 +1,12 @@
+<div class="app-container">
+  <h2>Edit Task</h2>
+
+  <div class="form-container">
+    <input [(ngModel)]="task.title" placeholder="Update task title" />
+    <button (click)="updateTask()">Update</button>
+  </div>
+
+  <p *ngIf="message">{{ message }}</p>
+
+  <button routerLink="/task-list" class="nav-button">Go to Task List</button>
+</div>

@@ -1,0 +1,35 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+input {
+  padding: 10px;
+  width: 350px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #6a0dad;
+  box-shadow: 0 0 4px rgba(106, 13, 173, 0.4);
+}
+
+p {
+  text-align: center;
+  color: green;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.nav-button {
+  display: block;
+  margin: 20px auto 0;
+  background-color: #6a0dad;
+}

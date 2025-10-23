@@ -12,6 +12,10 @@ export class TaskListComponent {
   loading = false;
   errorMessage = '';
 
+  selectedTask: TaskItem | null = null;
+  showModal = false;
+  message = '';
+
   constructor(private taskService: TaskService) { }
 
   // Page load
@@ -41,6 +45,27 @@ export class TaskListComponent {
       },
       error: () => {
         this.errorMessage = 'Failed to update task status.';
+      }
+    });
+  }
+
+  confirmDelete(task: TaskItem): void {
+    this.selectedTask = task;
+    this.showModal = true;
+  }
+
+  deleteConfirmed(): void {
+    if (!this.selectedTask) return;
+
+    this.taskService.deleteTask(this.selectedTask.id).subscribe({
+      next: () => {
+        this.tasks = this.tasks.filter(t => t.id !== this.selectedTask?.id);
+        this.showModal = false;
+        this.selectedTask = null;
+      },
+      error: () => {
+        this.message = 'Failed to delete task';
+        this.showModal = false;
       }
     });
   }

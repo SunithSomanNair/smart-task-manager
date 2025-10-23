@@ -1,0 +1,9 @@
+<div *ngIf="show" class="modal-overlay">
+  <div class="modal-content">
+    <p>{{ message }}</p>
+    <div class="modal-buttons">
+      <button class="delete-btn" (click)="confirm.emit()">Delete</button>
+      <button class="cancel-btn" (click)="cancel.emit()">Cancel</button>
+    </div>
+  </div>
+</div>
