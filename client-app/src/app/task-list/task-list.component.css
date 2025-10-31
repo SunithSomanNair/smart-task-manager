@@ -23,7 +23,21 @@
 .task-content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+h3 {
+  margin: 21px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.right-actions {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 6px;
 }
 
 .badge-complete {
@@ -40,6 +54,7 @@
   display: block;
   margin: 20px auto 0;
   background-color: #6a0dad;
+  padding: 7px 20px;
 }
 
 button {
@@ -55,7 +70,7 @@ button {
   background-color: #4c9e50;
   color: white;
   border: none;
-  padding: 6px 12px;
+  padding: 7px 12px;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -85,25 +100,29 @@ button {
   margin-bottom: 8px;
 }
 
-.icon-button-row {
+.icon-buttons {
   display: flex;
-  justify-content: flex-end; /* ✅ aligns to right */
-  gap: 12px;
-  margin-bottom: 10px;
+  gap: 8px;
+  padding-bottom: 3px;
 }
 
 .icon-button {
-  background-color: transparent;
+  background: transparent;
   border: none;
+  padding: 6px;
   border-radius: 50%;
-  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
-.icon-button:hover {
-  background-color: rgba(106, 13, 173, 0.1); /* light purple shade */
-  box-shadow: 0 0 6px rgba(106, 13, 173, 0.3); /* soft glow */
+.edit-button:hover {
+  background-color: rgba(204, 132, 255, 0.619);
+  /* transform: scale(1.1); */
+}
+
+.delete-button:hover {
+  background-color: rgba(255, 183, 124, 0.735);
+  /* transform: scale(1.1); */
 }
 
 .icon-button svg {

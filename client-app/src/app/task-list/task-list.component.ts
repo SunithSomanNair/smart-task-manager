@@ -15,6 +15,7 @@ export class TaskListComponent {
   selectedTask: TaskItem | null = null;
   showModal = false;
   message = '';
+  confirmMessage = '';
 
   constructor(private taskService: TaskService) { }
 
@@ -51,6 +52,7 @@ export class TaskListComponent {
 
   confirmDelete(task: TaskItem): void {
     this.selectedTask = task;
+    this.confirmMessage = 'Are you sure you want to delete this task?';
     this.showModal = true;
   }
 

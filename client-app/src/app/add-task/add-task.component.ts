@@ -21,7 +21,7 @@ export class AddTaskComponent {
     const task: TaskItem = { id: 0, title: this.newTask, isCompleted: false };
     this.taskService.addTask(task).subscribe({
       next: () => {
-        this.message = `Task "${this.newTask}" added successfully`;
+        this.message = 'Task added successfully';
         this.newTask = '';
       },
       error: () => {
