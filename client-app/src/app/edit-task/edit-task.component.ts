@@ -32,7 +32,6 @@ export class EditTaskComponent implements OnInit {
     this.taskService.updateTask(this.task).subscribe({
       next: () => {
         this.message = 'Task updated successfully';
-        setTimeout(() => this.router.navigate(['/task-list']), 1500);
       },
       error: () => this.message = 'Failed to update task'
     });
