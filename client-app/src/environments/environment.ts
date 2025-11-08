@@ -1,5 +1,5 @@
 // development
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:xxxx/api' // placeholder
+  apiBaseUrl: 'http://localhost:5157/api' // placeholder
 };
