@@ -5,7 +5,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy => policy.WithOrigins(
                         "http://localhost:4200",
-                        "https://smart-task-manager.azurestaticapps.net")
+                        "https://brave-island-0cfd24710.3.azurestaticapps.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod());
 });
