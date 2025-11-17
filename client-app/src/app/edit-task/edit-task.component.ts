@@ -8,7 +8,7 @@ import { TaskService, TaskItem } from '../services/task.service';
   styleUrls: ['./edit-task.component.css']
 })
 export class EditTaskComponent implements OnInit {
-  task: TaskItem = { id: 0, title: '', isCompleted: false };
+  task: TaskItem = { id: '', title: '', isCompleted: false };
   message = '';
 
   constructor(private route: ActivatedRoute,
@@ -16,11 +16,13 @@ export class EditTaskComponent implements OnInit {
     private taskService: TaskService) { }
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.taskService.getTaskById(id).subscribe({
-      next: data => this.task = data,
-      error: () => this.message = 'Failed to load task'
-    });
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.taskService.getTaskById(id).subscribe({
+        next: data => this.task = data,
+        error: () => this.message = 'Failed to load task'
+      });
+    }
   }
 
   updateTask(): void {

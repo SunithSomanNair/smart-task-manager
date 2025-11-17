@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export interface TaskItem {
-  id: number;
+  id?: string;
   title: string;
   isCompleted: boolean;
 }
@@ -28,7 +28,7 @@ export class TaskService {
     );
   }
 
-  getTaskById(id: number): Observable<TaskItem> {
+  getTaskById(id: string): Observable<TaskItem> {
     return this.http.get<TaskItem>(`${this.apiUrl}/${id}`);
   }
 
@@ -45,7 +45,7 @@ export class TaskService {
     return this.http.put(`${this.apiUrl}/${task.id}`, task);
   }
 
-  deleteTask(id: number): Observable<void> {
+  deleteTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

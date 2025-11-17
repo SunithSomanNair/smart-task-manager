@@ -59,17 +59,19 @@ export class TaskListComponent {
   deleteConfirmed(): void {
     if (!this.selectedTask) return;
 
-    this.taskService.deleteTask(this.selectedTask.id).subscribe({
-      next: () => {
-        this.tasks = this.tasks.filter(t => t.id !== this.selectedTask?.id);
-        this.showModal = false;
-        this.selectedTask = null;
-      },
-      error: () => {
-        this.message = 'Failed to delete task';
-        this.showModal = false;
-      }
-    });
+    if (this.selectedTask?.id) {
+      this.taskService.deleteTask(this.selectedTask.id).subscribe({
+        next: () => {
+          this.tasks = this.tasks.filter(t => t.id !== this.selectedTask?.id);
+          this.showModal = false;
+          this.selectedTask = null;
+        },
+        error: () => {
+          this.message = 'Failed to delete task';
+          this.showModal = false;
+        }
+      });
+    }
   }
 
 }

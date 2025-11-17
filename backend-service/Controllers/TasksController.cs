@@ -7,59 +7,60 @@ namespace backend_service.Controllers
     [Route("api/[controller]")]
     public class TasksController : ControllerBase
     {
-        private static List<TaskItem> tasks = new();
+        private readonly ITaskRepository _repository;
+
+        // Repository is injected (Cosmos or InMemory depending on Program.cs)
+        public TasksController(ITaskRepository repository)
+        {
+            _repository = repository;
+        }
 
         [HttpGet]
-        public ActionResult<IEnumerable<TaskItem>> GetTasks()
+        public async Task<IActionResult> GetTasks()
         {
+            var tasks = await _repository.GetTasksAsync();
             return Ok(tasks);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<TaskItem> GetTaskById(int id)
+        public async Task<IActionResult> GetTaskById(string id)
         {
+            var tasks = await _repository.GetTasksAsync();
             var task = tasks.FirstOrDefault(t => t.Id == id);
             if (task == null)
             {
                 return NotFound();
             }
-
             return Ok(task);
         }
 
         [HttpPost]
-        public ActionResult<TaskItem> AddTask(TaskItem newTask)
+        public async Task<IActionResult> AddTask([FromBody] TaskItem newTask)
         {
-            newTask.Id = tasks.Count + 1;
-            tasks.Add(newTask);
-            return Ok(newTask);
+            var task = await _repository.AddTaskAsync(newTask);
+            return Ok(task);
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateTask(int id, TaskItem updatedTask)
+        public async Task<IActionResult> UpdateTask(string id, [FromBody] TaskItem updatedTask)
         {
-            var existingTask = tasks.FirstOrDefault(t => t.Id == id);
-            if (existingTask == null)
+            updatedTask.Id = id;
+            var task = await _repository.UpdateTaskAsync(updatedTask);
+            if (task == null)
             {
-                return NotFound();
+                return NotFound(new { message = "Task not found." });
             }
-
-            existingTask.Title = updatedTask.Title;
-            existingTask.IsCompleted = updatedTask.IsCompleted;
-
-            return Ok(existingTask);
+            return Ok(task);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteTask(int id)
+        public async Task<IActionResult> DeleteTask(string id)
         {
-            var taskToDelete = tasks.FirstOrDefault(t => t.Id == id);
-            if (taskToDelete == null)
+            var deleted = await _repository.DeleteTaskAsync(id);
+            if (!deleted)
             {
-                return NotFound();
+                return NotFound(new { message = "Task not found." });
             }
-
-            tasks.Remove(taskToDelete);
             return Ok(new { message = "Task deleted successfully." });
         }
     }
